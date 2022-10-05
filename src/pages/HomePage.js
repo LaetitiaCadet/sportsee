@@ -1,15 +1,9 @@
-import '../js/mock/mockData'
 import Navbar from '../js/components/Navbar';
 import Sidebar from '../js/components/Sidebar';
-import { USER_MAIN_DATA } from '../js/mock/mockData';
-import TestName from '../js/components/TestName';
+import { Link } from "react-router-dom";
 
 
 const HomePage = () => {
-  const ids = []
-  const users = USER_MAIN_DATA.forEach(user => ids.push(user))
-
-  console.log(ids)
   return (
     <div>
       <header className="App-header">
@@ -20,13 +14,16 @@ const HomePage = () => {
         <section>
           <h1>Bienvenue sur l'application Sportsee</h1>
           <p>Choisissez un Utilisateur</p>
-
-            {ids.map(user => <p>
-              <TestName
-                key={user.id}
-                id={user.id}
-              />
-              </p>)}  
+          <div>
+              <ul>
+                  <li>
+                  <Link to={`/Profil?id=12`}><p>User 12</p></Link>
+                  </li>
+                  <li>
+                  <Link to={`/Profil?id=18`}><p>User 18</p></Link>
+                  </li>
+              </ul>
+          </div>
         </section>  
       </main>
 

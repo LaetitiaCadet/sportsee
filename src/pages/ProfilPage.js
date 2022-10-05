@@ -1,4 +1,5 @@
-import { USER_AVERAGE_SESSIONS, USER_MAIN_DATA } from "../js/mock/mockData";
+import {getUserFirstName, getUserDailyActivity} from "../js/mock/mockApi";
+import Activity from "../js/components/charts/Activity";
 import { useLocation} from 'react-router-dom';
 import Navbar from '../js/components/Navbar';
 import Sidebar from '../js/components/Sidebar';
@@ -6,10 +7,10 @@ import Sidebar from '../js/components/Sidebar';
 const ProfilPage = () => {
   const urlId = useLocation().search
   const id = new URLSearchParams(urlId).get('id')
-  console.log(id)
 
-  let userData = USER_MAIN_DATA.filter( user => user.id == id)
-    console.log(userData)
+  let userFirstName = getUserFirstName(id)
+  let dataActivity = getUserDailyActivity(id)
+ 
 
   return (
       <div className="App">
@@ -18,11 +19,14 @@ const ProfilPage = () => {
         <Sidebar></Sidebar>
       </header>
       <main className= "mx-auto">
-        <section className="">
-            {
-              userData.map(user => <h1 key={id}>Bonjour <span>{user.userInfos.firstName}</span></h1>)
-            }
+        <section className="Title">
+            <h1 key={id}>Bonjour <span>{userFirstName}</span></h1>
             <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
+        </section>
+        <section>
+            <Activity
+             data = {dataActivity}
+            />
         </section>
       </main>
     </div>
