@@ -1,13 +1,10 @@
 import {BarChart,Bar,XAxis,YAxis,CartesianGrid,Tooltip,Legend, ResponsiveContainer} from "recharts";
-import {getUserDailyActivity} from "../../mock/mockApi";
-import {useLocation} from "react-router-dom";
-
-const Activity = ({data}) => {
-    
+import "../../../scss/components/Activity.scss"
+const Activity = ({data}) => {   
     return (
         <ResponsiveContainer width="100%" height={400}>
             <BarChart  width={900} height={400}  data={data}>
-                <CartesianGrid strokeDasharray="3" vertical="false" height={1} />
+                <CartesianGrid strokeDasharray="3 3" vertical="false" height={1} />
                 <XAxis dataKey= 'day'/>
                 <YAxis
                     datakey='kilogram'

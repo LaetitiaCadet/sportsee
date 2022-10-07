@@ -1,6 +1,6 @@
 import {getUserFirstName, getUserDailyActivity} from "../js/mock/mockApi";
 import Activity from "../js/components/charts/Activity";
-import { useLocation} from 'react-router-dom';
+import {useLocation} from 'react-router-dom';
 import Navbar from '../js/components/Navbar';
 import Sidebar from '../js/components/Sidebar';
 

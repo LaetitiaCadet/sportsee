@@ -2,7 +2,6 @@ import Navbar from '../js/components/Navbar';
 import Sidebar from '../js/components/Sidebar';
 import { Link } from "react-router-dom";
 
-
 const HomePage = () => {
   return (
     <div>
@@ -26,8 +25,6 @@ const HomePage = () => {
           </div>
         </section>  
       </main>
-
-
     </div>
   )
 }
