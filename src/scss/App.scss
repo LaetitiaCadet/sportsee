@@ -1,7 +1,52 @@
-section {
+body{
+  font-family: 'Roboto', sans-serif;
+}
+
+#homePage-block{
+  margin: 54px 100px 0 180px;
+}
+
+#charts-block {
   margin: 54px 100px 0 180px;
 
   h1 span {
     color:red
   }
+
+  .keydata-item{
+    background-color:#FBFBFB;
+    padding: 15px;
+    border-radius: 8px;
+    height: 125px;
+
+    .keyData-icon{
+      width:60px; 
+      height:60px
+    }
+  
+    .title{
+      margin:0;
+      h5{
+        font-weight: 600;
+      }
+      p{
+        font-size:20px;
+        margin-bottom: 0;
+      }
+      
+    }
+  }
+
+}
+
+.bgd-grey{
+  background-color:#FBFBFB;
+}
+
+.bgd-black{
+  background-color: #282D30;
+}
+
+.bgd-red{
+  background-color: #FF0000;
 }

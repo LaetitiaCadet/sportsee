@@ -1,0 +1,24 @@
+
+.score-title{
+    position: absolute;
+    top:15px;
+    left:30px;
+    font-weight: 700;
+}
+.score-text {
+    text-align: center;
+    position: absolute;
+    top: 32%;
+    left: 40%;
+
+    p:first-child{
+        font-weight: 700;
+        font-size: 22px;
+        margin-bottom: 0;
+    }
+    p:nth-child(2),p:nth-child(3){
+        color: grey;
+        margin-bottom: 0;
+
+    }
+}

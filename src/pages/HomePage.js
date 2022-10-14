@@ -9,7 +9,7 @@ const HomePage = () => {
         <Navbar></Navbar>
         <Sidebar></Sidebar>
       </header>
-      <main className= "mx-auto">
+      <main id="homePage-block">
         <section>
           <h1>Bienvenue sur l'application Sportsee</h1>
           <p>Choisissez un Utilisateur</p>
