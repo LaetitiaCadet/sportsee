@@ -16,15 +16,27 @@ const Activity = ({data}) => {
       };
 
     return (
-        <div className=" bgd-grey rounded">
+        <div className="position-relative bgd-grey rounded">
+            <div className="legends-activity position-absolute d-flex mt-4 px-5">
+                    <h5 className='legend-title'>Activité quotidienne</h5>
+
+                    <div className="legend-values d-flex">
+                        <div className="legend-kilogram d-flex">
+                            <div className="bubble-black mx-3 my-2"></div>
+                            <p>Poids (kg)</p>
+                        </div>
+                        <div className="legend-calories d-flex">
+                            <div className="bubble-red mx-3 my-2"></div>
+                            <p>Calories brûlées (kCal)</p>
+                        </div>
+                    </div>
+            </div>
             <ResponsiveContainer width="100%" height={320}>
-                <BarChart  width={835} height={320}  data={data}>
-                    <Text
-                        textAnchor="start"
-                    />
-                    <CartesianGrid strokeDasharray="3 3" height={1} vertical={false} />
+                <BarChart  width={835} height={310}  data={data} barGap={15}  margin={{ top: 95, right: 48, bottom: 15, left: 48 }} >
+
+                    <CartesianGrid strokeDasharray="3" height={1} vertical={false} />
                     <XAxis 
-                        dataKey= 'day'
+                        dataKey='day'
                         tickLine={false}
                         tick={{
                             fontSize: 12,
@@ -38,18 +50,19 @@ const Activity = ({data}) => {
                         width={30}
                         stroke='#9B9EAC' 
                         tickLine={false}
-                        tick={{
+                        tick={{ 
                             fontSize: 12,
                             fontWeight: 600,
                         }}
-                        // domain={['dataMin', 'dataMax']}
-                    />
-                    <YAxis 
+                        domain={[0 ,'dataMin - 1 ', 'dataMax + 2']}
+                    /> 
+                     <YAxis 
                         datakey='calories'
                         orientation='right'
                         type='number'
                         width={30}
-                        stroke='#9B9EAC' 
+                        stroke='#9B9EAC'
+                        domain={[0, "dataMax + 50"]} 
                     />
                     <Tooltip
                         content={<CustomTooltip />}
@@ -59,9 +72,8 @@ const Activity = ({data}) => {
                         strokeOpacity: 0.2,
                         }}
                     />
-                    <Legend verticalAlign="top" height={36} iconType="circle" align="right" />
                     <Bar dataKey='kilogram' barSize={10} fill="#000" radius={[50, 50, 0, 0]} />
-                    <Bar dataKey='calories'  barSize={10} fill="#FF0000" radius={[50, 50, 0, 0]} />
+                    <Bar dataKey='calories'  barSize={10}  fill="#FF0000" radius={[50, 50, 0, 0]} />
                 </BarChart> 
             </ResponsiveContainer>
         </div>

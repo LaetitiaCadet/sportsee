@@ -32,10 +32,10 @@ const AverageSession = ({data}) => {
             height={263}
             data={data}
             margin={{
-              top:0,
+              top:100,
               right: 12,
-              left: 8,
-              bottom: 5,
+              left: 7,
+              bottom: 0,
             }}
           >
             <CartesianGrid strokeDasharray="" vertical={false} horizontal={false}  fill="#FF0000"/>

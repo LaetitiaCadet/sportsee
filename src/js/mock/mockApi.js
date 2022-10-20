@@ -1,6 +1,5 @@
-import axios from 'axios'
-import { USER_AVERAGE_SESSIONS, USER_MAIN_DATA, USER_ACTIVITY, USER_PERFORMANCE } from "./mockData";
 
+import { USER_AVERAGE_SESSIONS, USER_MAIN_DATA, USER_ACTIVITY, USER_PERFORMANCE } from "./mockData";
 
 
 /**
@@ -15,7 +14,6 @@ export const getUserId = (userId) => {
         }
     }
 }
-
 
 /**
  * It takes a userId and returns the firstName of the user with that userId.
@@ -202,7 +200,6 @@ export const getUserScore = (userId) => {
            
         }
     }
-    console.log(resultScore)
     return resultScore
 }
 

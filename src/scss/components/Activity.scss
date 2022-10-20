@@ -1,5 +1,41 @@
 .tooltip-activity{
-    background-color: #FF0000;
-    color:#fff
+    background-color: #E60000;
+    border:none;
+    
+    .label{
+        color:#fff;
+        padding:15px;
+        font-size: 14px;
+    }
+
 }
 
+.legends-activity{
+
+    justify-content: space-between;
+    width: 100%;
+
+    .legend-title{
+        font-weight: 600;
+        font-size: 15px;
+        line-height: 24px;
+    }
+    .legend-values{
+        color:#74798C;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 24px;
+        .bubble-black{
+            background: #282D30;
+            width:8px;
+            height: 8px;
+            border-radius: 50px;
+        }
+        .bubble-red{
+            background: #E60000;
+            width:8px;
+            height: 8px;
+            border-radius: 50px;
+        }
+    } 
+}
