@@ -215,5 +215,3 @@ export const getUserKeyData = (userId) => {
         }
     }
 }
-
-console.log(process.env.REACT_APP_MODE)

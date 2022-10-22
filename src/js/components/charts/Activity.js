@@ -43,6 +43,14 @@ const Activity = ({data}) => {
                             fontWeight: 600,
                         }}
                     />
+                    <YAxis 
+                        datakey='calories'
+                        orientation='right'
+                        type='number'
+                        width={30}
+                        stroke='#9B9EAC'
+                        domain={[0, "dataMax + 50"]}
+                    />
                     <YAxis
                         datakey='kilogram'
                         orientation='right'
@@ -54,16 +62,11 @@ const Activity = ({data}) => {
                             fontSize: 12,
                             fontWeight: 600,
                         }}
-                        domain={[0 ,'dataMin - 1 ', 'dataMax + 2']}
+                        domain={["dataMin - 1", "dataMax + -6"]}
+                        allowDecimals={false}
+                        dx={48}
                     /> 
-                     <YAxis 
-                        datakey='calories'
-                        orientation='right'
-                        type='number'
-                        width={30}
-                        stroke='#9B9EAC'
-                        domain={[0, "dataMax + 50"]} 
-                    />
+
                     <Tooltip
                         content={<CustomTooltip />}
                         stroke="#FFFFFF"

@@ -1,16 +1,15 @@
-import {RadialBarChart, RadialBar, PolarAngleAxis ,Legend , Tooltip,  ResponsiveContainer } from "recharts";
+import {RadialBarChart, RadialBar, PolarAngleAxis, ResponsiveContainer } from "recharts";
 import '../../../scss/components/TodayScore.scss'
 
 const TodayScore = ({data}) => {
-    let scorePourcentage = data.map(score => score)
     let scoreValue = data.map(score => score.todayScore)
-    return (
+    return ( 
         <div className="position-relative bgd-grey rounded">
             <ResponsiveContainer width='100%' height={263}>
                 <RadialBarChart 
                     width={258} 
                     height={263}
-                    data={scorePourcentage}
+                    data={data}
                     cx="50%"
                     cy="50%"
                     innerRadius={60}
@@ -20,6 +19,7 @@ const TodayScore = ({data}) => {
                     endAngle={-180}
                     >
                     <RadialBar
+                        type="number"
                         minAngle={15}
                         background
                         clockWise

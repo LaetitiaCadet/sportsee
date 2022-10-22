@@ -59,7 +59,6 @@ export const getApiUserDailyActivity = async (userId) => {
             calories: data.calories 
         })
     }
-    console.log(dataActivity)
     return dataActivity
 } 
 
@@ -88,7 +87,6 @@ export const getApiUserPerformance = async (userId) => {
     let kindItems
     const response = await axios.get(baseURL + userId + '/performance')
     const user = await response.data.data;
-    console.log(user)
     for(const data of user.data){ 
         switch (data.kind) {
             case 1:
@@ -131,14 +129,15 @@ export const getApiUserPerformance = async (userId) => {
  * @returns An array of objects.
  */
 export const getApiUserScore = async (userId) => {
-    let dataScore = []
+    let resultScore = []
     const response = await axios.get(baseURL + userId)
-    const user = await response.data.data ;
-    dataScore.push({
-            todayScore: Math.round(user.todayScore * 100)
+    const user = await response.data.data;
+    resultScore.push({
+        todayScore: (user.todayScore * 100 || user.score * 100 )
     })
-    console.log(dataScore)
-    return dataScore
+
+    return resultScore
+
 }
 
 /**
@@ -185,7 +184,6 @@ export const getApiUserAverageSession = async (userId) => {
             sessionLength: data.sessionLength
         })
     }
-    console.log(dataAverageSession)
     return dataAverageSession
 
 }
