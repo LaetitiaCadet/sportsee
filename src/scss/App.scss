@@ -2,9 +2,6 @@ body{
   font-family: 'Roboto', sans-serif;
 }
 
-#homePage-block{
-  margin: 54px 100px 0 180px;
-}
 
 #charts-block {
   
@@ -20,6 +17,7 @@ body{
     padding: 15px;
     border-radius: 8px;
     height: 125px;
+    margin-bottom: 35px;
 
     .keyData-icon{
       width:60px; 

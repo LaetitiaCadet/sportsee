@@ -146,36 +146,35 @@ export const getUserAverageSession = (userId) => {
  */
 export const getUserPerformance = (userId) => {
     let dataPerformance = []
-    let kindItems
     for( let user of USER_PERFORMANCE){
         if(user.userId == userId){
             for(const data of user.data){ 
                 switch (data.kind) {
                     case 1:
-                            kindItems = user.kind[1]
+                            data.kind = 'Intensité'
                         break;
                     case 2:
-                            kindItems = user.kind[2]
+                            data.kind = 'Vitesse'
                         break;
                     case 3:
-                            kindItems = user.kind[3]
+                            data.kind = 'Force'
                         break;
                     case 4:
-                            kindItems = user.kind[4]
-                         break;
+                            data.kind = 'Endurance'
+                        break;
                     case 5:
-                        kindItems = user.kind[5]
+                            data.kind = 'Energie'
                         break;
                     case 6:
-                        kindItems = user.kind[6]
+                            data.kind = "Cardio"
                             break;
-                
+                    
                     default:
                         break;
                 }
                 dataPerformance.push({
                     value: data.value, 
-                    kind: kindItems
+                    kind: data.kind
 
                 })
             }

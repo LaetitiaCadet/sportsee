@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react"
-
 import {getUserFirstName, getUserDailyActivity, getUserAverageSession, getUserPerformance, getUserKeyData, getUserScore} from "../js/mock/mockApi";
-import {getApiUserFirstName, getApiUserAverageSession, getApiUserDailyActivity, getApiUserKeyData, getApiUserPerformance, getApiUserScore } from "../js/Api/api";
+import {getApiUserFirstName, getApiUserAverageSession, getApiUserDailyActivity, getApiUserKeyData, getApiUserPerformance, getApiUserScore, getApiUsersData } from "../js/Api/api";
+import "../js/Api/api"
 import Activity from "../js/components/charts/Activity";
 import AverageSession from "../js/components/charts/AverageSession";
 import Performance from "../js/components/charts/Performance";
@@ -28,6 +28,26 @@ const ProfilPage = () => {
 // data API
   useEffect(() => {
 
+    const fetchData = async () => {
+      try {
+        const dataFirstName = await getApiUserFirstName(id) 
+        setUserFirstName(dataFirstName)
+        const dataActivity =  await getApiUserDailyActivity(id)
+        setActivity(dataActivity)
+        const dataAverageSession = await getApiUserAverageSession(id)
+        setAverageSession(dataAverageSession)
+        const dataPerformance = await getApiUserPerformance(id)
+        setPerformance(dataPerformance)
+        const dataKeyData = await getApiUserKeyData(id)
+        setKeyData(dataKeyData)
+        const dataTodayScore = await getApiUserScore(id)
+        setTodayScore(dataTodayScore)
+      } catch(err) {
+        console.log(err)
+      }
+    }
+
+
     if (process.env.NODE_ENV === "development"){
       console.log('MockApi')
       const dataFirstName = getUserFirstName(id)
@@ -44,34 +64,11 @@ const ProfilPage = () => {
       setTodayScore(dataTodayScore)
 
    } else if (process.env.NODE_ENV === 'production') {
-      const fetchData = async () => {
-        try {
-          const dataFirstName = await getApiUserFirstName(id) 
-          setUserFirstName(dataFirstName)
-          const dataActivity =  await getApiUserDailyActivity(id)
-          setActivity(dataActivity)
-          const dataAverageSession = await getApiUserAverageSession(id)
-          setAverageSession(dataAverageSession)
-          const dataPerformance = await getApiUserPerformance(id)
-          setPerformance(dataPerformance)
-          const dataKeyData = await getApiUserKeyData(id)
-          setKeyData(dataKeyData)
-          const dataTodayScore = await getApiUserScore(id)
-          setTodayScore(dataTodayScore)
-        } catch(err) {
-          console.log(err)
-        }
-      }
       console.log('DataApi')
       fetchData()
     }
 
-
   },[])
-
-  console.log(todayScore)
-
-
 
   return (
 
@@ -82,36 +79,36 @@ const ProfilPage = () => {
       </header>
       <main id="charts-block" className="row">
         <Sidebar></Sidebar>
-        <div className="col-10 ms-4 mt-5">
+        <div className="col-10 mt-5">
           <section  className="container">
           <section className="Title">
               <h1 key={id}>Bonjour <span>{userFirstName}</span></h1>
               <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
           </section>
-            <div className="row">
-                <div className="col-9">
+            <div className="row mt-4">
+                <div className="col-xl-9 col-lg-12">
                   <Activity
                   data = {activity}
                   /> 
                   <div className="row mt-4">
-                    <div className="col-4">
+                    <div className="col-xl-4 col-lg-12 my-4">
                       <AverageSession
                         data = {averageSession}
                       />
                     </div>
-                    <div className="col-4">
+                    <div className="col-xl-4 col-lg-12 my-4">
                       <Performance
                           data = {performance}
                         />
                     </div>
-                    <div className="col-4">
+                    <div className="col-xl-4 col-lg-12 my-4">
                       <TodayScore
                           data = {todayScore}
                         />
                     </div>
                   </div>    
                 </div>
-                <div className="col-3">
+                <div className="col-xl col-lg">
                   <KeyData
                     calorieCount={keyData.calorieCount}
                     proteinCount={keyData.proteinCount}

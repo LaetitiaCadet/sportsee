@@ -8,7 +8,7 @@ import copyright from '../../assets/copyright.png'
 
 const Sidebar = () => {
     return (
-        <div className='wrapper d-flex flex-column col-1'>
+        <div className='wrapper d-flex flex-column col-1 me-5'>
             <nav className="sidebar">
                 <div className='icons'>
                     <a className="nav-link my-2" href="#"><img src={meditation} alt="meditation" className="meditation" /></a>

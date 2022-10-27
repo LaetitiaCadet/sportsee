@@ -9,7 +9,7 @@ const AverageSession = ({data}) => {
   const CustomTooltip = ({ active, payload }) => {
     if (active && payload) {
       return (
-        <div className="custom-tooltip">
+        <div className="custom-tooltip average-tooltip">
           <p className="label">{`${payload[0].value} min`}</p>
         </div>
       );
@@ -28,15 +28,7 @@ const AverageSession = ({data}) => {
         </div>
         <ResponsiveContainer width="100%" height={263}>
           <LineChart
-            width={258}
-            height={263}
             data={data}
-            margin={{
-              top:100,
-              right: 12,
-              left: 7,
-              bottom: 0,
-            }}
           >
             <CartesianGrid strokeDasharray="" vertical={false} horizontal={false}  fill="#FF0000"/>
             <XAxis 
@@ -50,7 +42,7 @@ const AverageSession = ({data}) => {
              tickLine={false}
              axisLine={false}
               />
-            <YAxis hide />
+            <YAxis dataKey="sessionLength" domain={[0, 'dataMax + 30']} hide />
             <Tooltip
               content={<CustomTooltip />}
               cursor={{

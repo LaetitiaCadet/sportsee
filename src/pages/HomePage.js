@@ -7,10 +7,11 @@ const HomePage = () => {
     <div>
       <header className="App-header">
         <Navbar></Navbar>
-        <Sidebar></Sidebar>
+
       </header>
-      <main id="homePage-block">
-        <section>
+      <main id="homePage-block" className='row'>
+        <Sidebar></Sidebar>
+        <section className='col-10 ms-4 mt-5'>
           <h1>Bienvenue sur l'application Sportsee</h1>
           <p>Choisissez un Utilisateur</p>
           <div>

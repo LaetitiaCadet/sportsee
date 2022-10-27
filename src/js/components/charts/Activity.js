@@ -5,7 +5,7 @@ const Activity = ({data}) => {
     const CustomTooltip = ({ active, payload }) => {
         if (active && payload) {
           return (
-            <div className="custom-tooltip">
+            <div className="custom-tooltip tooltip-activity">
               <p className="label">{`${payload[0].value}Kg`}</p>
               <p className="label">{`${payload[1].value}Kcal`}</p>
             </div>
@@ -45,14 +45,18 @@ const Activity = ({data}) => {
                     />
                     <YAxis 
                         datakey='calories'
-                        orientation='right'
+                        yAxisId="left"
+                        orientation='left'
+                        hide={true}
                         type='number'
                         width={30}
                         stroke='#9B9EAC'
+                        tickLine={false}
                         domain={[0, "dataMax + 50"]}
                     />
                     <YAxis
                         datakey='kilogram'
+                        yAxisId="right"
                         orientation='right'
                         type='number'
                         width={30}
@@ -75,8 +79,8 @@ const Activity = ({data}) => {
                         strokeOpacity: 0.2,
                         }}
                     />
-                    <Bar dataKey='kilogram' barSize={10} fill="#000" radius={[50, 50, 0, 0]} />
-                    <Bar dataKey='calories'  barSize={10}  fill="#FF0000" radius={[50, 50, 0, 0]} />
+                    <Bar dataKey='kilogram' yAxisId="right" barSize={10} fill="#000" radius={[50, 50, 0, 0]} />
+                    <Bar dataKey='calories' yAxisId="left"  barSize={10}  fill="#FF0000" radius={[50, 50, 0, 0]} />
                 </BarChart> 
             </ResponsiveContainer>
         </div>
