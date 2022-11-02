@@ -1,11 +1,11 @@
-.nav{
+.nav, .navbar{
     background: black;
     height: 85px;
     color: white;
     font-weight: 500;
     font-size: 24px;
     .logo{
-        max-width: 90%;
+        min-width:20%;
         max-height: 65.93px;
     }
     a{
@@ -14,3 +14,28 @@
         font-size: 24px;
     }
 }
+
+@media (min-width: 769px) { 
+    .nav-mobile{
+        display: none;
+    }
+
+    .nav-desktop{
+        display:flex;
+    }
+
+}
+
+// Example
+// Apply styles starting from medium devices and up to extra large devices
+@media (min-width: 400px) and (max-width: 768px) { 
+    .nav-mobile{
+        display: block;
+    }
+
+    .nav-desktop{
+        display: none;
+    }
+
+}
+

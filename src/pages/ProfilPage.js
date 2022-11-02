@@ -1,21 +1,35 @@
+/* It's importing the useState & useEffect hooks from the React library. */
 import React, {useState, useEffect} from "react"
+/* It's importing the useParams & Navigate hook from the react-router-dom library. */
+import {useParams, Navigate, useRouteMatch} from 'react-router-dom';
+
+//Data Api & Mocked data Api
 import {getUserFirstName, getUserDailyActivity, getUserAverageSession, getUserPerformance, getUserKeyData, getUserScore} from "../js/mock/mockApi";
-import {getApiUserFirstName, getApiUserAverageSession, getApiUserDailyActivity, getApiUserKeyData, getApiUserPerformance, getApiUserScore, getApiUsersData } from "../js/Api/api";
+import {getApiUserFirstName, getApiUserAverageSession, getApiUserDailyActivity, getApiUserKeyData, getApiUserPerformance, getApiUserScore } from "../js/Api/api";
 import "../js/Api/api"
+
+//Components
 import Activity from "../js/components/charts/Activity";
 import AverageSession from "../js/components/charts/AverageSession";
 import Performance from "../js/components/charts/Performance";
 import TodayScore from "../js/components/charts/TodayScore";
 import KeyData from "../js/components/KeyData";
-import {useLocation} from 'react-router-dom';
 import Navbar from '../js/components/Navbar';
 import Sidebar from '../js/components/Sidebar';
 
 
 
+/**
+ * The function is called when the component is mounted. 
+ * It checks the environment variable and if it's in development mode, it uses the mocked data. 
+ * If it's in production mode, it uses the API data. 
+ * 
+ * The data is then passed to the child components.
+ * @returns The return is a function that is being called.
+ */
 const ProfilPage = () => {
-  const urlId = useLocation().search
-  const id = new URLSearchParams(urlId).get('id')
+  let params = useParams() 
+  const userId = params.id
 
   const [userFirstName, setUserFirstName] = useState([]);
   const [activity, setActivity] = useState([]);
@@ -24,23 +38,24 @@ const ProfilPage = () => {
   const [keyData, setKeyData] = useState([]);
   const [todayScore, setTodayScore] = useState([])
 
-  
-// data API
-  useEffect(() => {
 
+
+  useEffect(() => {
+    console.log(userId)   
     const fetchData = async () => {
+
       try {
-        const dataFirstName = await getApiUserFirstName(id) 
+        const dataFirstName = await getApiUserFirstName(userId) 
         setUserFirstName(dataFirstName)
-        const dataActivity =  await getApiUserDailyActivity(id)
+        const dataActivity =  await getApiUserDailyActivity(userId)
         setActivity(dataActivity)
-        const dataAverageSession = await getApiUserAverageSession(id)
+        const dataAverageSession = await getApiUserAverageSession(userId)
         setAverageSession(dataAverageSession)
-        const dataPerformance = await getApiUserPerformance(id)
+        const dataPerformance = await getApiUserPerformance(userId)
         setPerformance(dataPerformance)
-        const dataKeyData = await getApiUserKeyData(id)
+        const dataKeyData = await getApiUserKeyData(userId)
         setKeyData(dataKeyData)
-        const dataTodayScore = await getApiUserScore(id)
+        const dataTodayScore = await getApiUserScore(userId)
         setTodayScore(dataTodayScore)
       } catch(err) {
         console.log(err)
@@ -49,20 +64,25 @@ const ProfilPage = () => {
 
 
     if (process.env.NODE_ENV === "development"){
-      console.log('MockApi')
-      const dataFirstName = getUserFirstName(id)
-      setUserFirstName(dataFirstName)
-      const dataActivity =   getUserDailyActivity(id)
-      setActivity(dataActivity)
-      const dataAverageSession =  getUserAverageSession(id)
-      setAverageSession(dataAverageSession)
-      const dataPerformance =  getUserPerformance(id)
-      setPerformance(dataPerformance)
-      const dataKeyData =  getUserKeyData(id)
-      setKeyData(dataKeyData)
-      const dataTodayScore =  getUserScore(id)
-      setTodayScore(dataTodayScore)
+        console.log('MockApi')
+       try {
 
+        const dataFirstName = getUserFirstName(userId)
+        setUserFirstName(dataFirstName)
+        const dataActivity = getUserDailyActivity(userId)
+        setActivity(dataActivity)
+        const dataAverageSession =  getUserAverageSession(userId)
+        setAverageSession(dataAverageSession)
+        const dataPerformance =  getUserPerformance(userId)
+        setPerformance(dataPerformance)
+        const dataKeyData =  getUserKeyData(userId)
+        setKeyData(dataKeyData)
+        const dataTodayScore =  getUserScore(userId)
+        setTodayScore(dataTodayScore)
+       } catch(err) {
+         console.log(err)
+
+       }
    } else if (process.env.NODE_ENV === 'production') {
       console.log('DataApi')
       fetchData()
@@ -70,7 +90,9 @@ const ProfilPage = () => {
 
   },[])
 
+
   return (
+    
 
     <div className="App">
           {process.env.NODE_ENV === 'development' ? process.env.REACT_APP_DEV_MODE : process.env.REACT_APP_PRO_MODE}
@@ -79,10 +101,10 @@ const ProfilPage = () => {
       </header>
       <main id="charts-block" className="row">
         <Sidebar></Sidebar>
-        <div className="col-10 mt-5">
+        <div className="col-md-10 mt-5">
           <section  className="container">
           <section className="Title">
-              <h1 key={id}>Bonjour <span>{userFirstName}</span></h1>
+              <h1 key={userId}>Bonjour <span>{userFirstName}</span></h1>
               <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
           </section>
             <div className="row mt-4">

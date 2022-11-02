@@ -2,8 +2,14 @@ import Calories from '../../assets/calories-icon.png'
 import Proteines from '../../assets/protein-icon.png'
 import Glucides from '../../assets/carbs-icon.png'
 import Lipides from '../../assets/fat-icon.png'
+import PropTypes from 'prop-types'
 
 
+/**
+ * It takes in 4 props (calorieCount, proteinCount, carbohydrateCount, lipidCount) and returns a div
+ * with 4 divs inside of it.
+ * @returns The KeyData component is being returned.
+ */
 const KeyData = ({calorieCount, proteinCount, carbohydrateCount, lipidCount}) => {
     return (
     <div className="container">
@@ -41,6 +47,14 @@ const KeyData = ({calorieCount, proteinCount, carbohydrateCount, lipidCount}) =>
     </div>
     )
 }
+
+
+KeyData.propTypes = {
+       calorieCount: PropTypes.number,
+       proteinCount: PropTypes.number,
+       carbohydrateCount:PropTypes.number,
+       lipidCount:PropTypes.number
+};
 
 
 export default KeyData;

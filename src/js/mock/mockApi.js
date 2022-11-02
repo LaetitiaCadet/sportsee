@@ -21,6 +21,7 @@ export const getUserId = (userId) => {
  * @returns The firstName of the user with the userId that was passed in.
  */
 export const getUserFirstName = (userId) => {
+    console.log(userId)
     for ( let user of USER_MAIN_DATA){
         if (user.id == userId){
             return user.userInfos.firstName

@@ -1,6 +1,12 @@
 import {RadialBarChart, RadialBar, PolarAngleAxis, ResponsiveContainer } from "recharts";
 import '../../../scss/components/TodayScore.scss'
 
+import PropTypes from 'prop-types'
+
+/**
+ * I'm trying to map the data from the data.js file and display it in the RadialBarChart component.
+ * @returns The data is being returned as an array of objects.
+ */
 const TodayScore = ({data}) => {
     let scoreValue = data.map(score => score.todayScore)
     return ( 
@@ -17,12 +23,13 @@ const TodayScore = ({data}) => {
                     barSize={10}
                     startAngle={180}
                     endAngle={-180}
+                    fill="#0000"
                     >
                     <RadialBar
                         type="number"
                         minAngle={15}
-                        background
                         clockWise
+                        background = {{fill: "#FBFBFB"}}
                         fill="#FF0000"
                         dataKey='todayScore'
                     />
@@ -44,6 +51,11 @@ const TodayScore = ({data}) => {
         </div>
 
     )
+}
+
+
+TodayScore.propTypes = {
+    data: PropTypes.arrayOf(PropTypes.object)
 }
 
 export default TodayScore; 

@@ -1,28 +1,41 @@
 import axios from 'axios'
-
-
+ 
 const baseURL =  `http://localhost:3001/user/`;
+
 
 /**
  * It takes a userId, and returns an object with the data from the four endpoints.
+ * 
  * @param userId - the user id
  * @returns An object with the following properties:
  */
-export const getApiUsersData = async (userId) => {
+export const GetApiUsersData = async (userId) => {
+
     let endPoints = [
         baseURL + userId,
         baseURL + userId + '/activity' ,
         baseURL + userId + '/performance' ,
         baseURL + userId + '/average-sessions' ,
-
     ]
+
     const datas =  await Promise.all( endPoints.map((endpoint) => axios.get(endpoint)))
         .then(([{data: user},{data: activity},{data: performance},{data: averageSession} ]) => {
             console.log({user, activity, performance, averageSession})
             return {user, activity, performance, averageSession}
         })
+
     return datas
 }
+
+
+
+export const getApiUserId = async (userId) => {
+
+    const response = await GetApiUsersData(userId)
+    const user = response.user
+    console.log(user)
+    return user.id
+} 
 
 /** 
  * It returns the first name of a user from an API.
@@ -30,7 +43,7 @@ export const getApiUsersData = async (userId) => {
  * @returns A promise that resolves to the firstName of the user.
  */
 export const getApiUserFirstName = async (userId) => {  
-  const response = await getApiUsersData(userId)
+  const response = await GetApiUsersData(userId)
   const user = response.user.data
   return user.userInfos.firstName
 }
@@ -42,7 +55,7 @@ export const getApiUserFirstName = async (userId) => {
  * @returns An array of objects.
  */
 export const getApiUserKeyData = async (userId) => {
-    const response = await getApiUsersData(userId)
+    const response = await GetApiUsersData(userId)
     const user = response.user.data
     return user.keyData
 }
@@ -67,7 +80,7 @@ export const getApiUserKeyData = async (userId) => {
  */
 export const getApiUserDailyActivity = async (userId) => {
     let dataActivity = []
-    const response = await getApiUsersData(userId)
+    const response = await GetApiUsersData(userId)
     const user = response.activity.data
     for ( let data of user.sessions){
         const dayInNumbers = new Date(data.day)
@@ -104,7 +117,7 @@ export const getApiUserDailyActivity = async (userId) => {
  */
 export const getApiUserPerformance = async (userId) => {
     let dataPerformance = []
-    const response = await getApiUsersData(userId)
+    const response = await GetApiUsersData(userId)
     const user = response.performance.data
     for(const data of user.data){ 
         switch (data.kind) {
@@ -149,7 +162,7 @@ export const getApiUserPerformance = async (userId) => {
  */
 export const getApiUserScore = async (userId) => {
     let resultScore = []
-    const response = await getApiUsersData(userId)
+    const response = await GetApiUsersData(userId)
     const user = response.user.data
     resultScore.push({
         todayScore: (user.todayScore * 100 || user.score * 100 )
@@ -169,7 +182,7 @@ export const getApiUserAverageSession = async (userId) => {
     let dataAverageSession = []
     let dayInLetters 
 
-    const response = await getApiUsersData(userId)
+    const response = await GetApiUsersData(userId)
     const user = response.averageSession.data
     for(const data of user.sessions){      
         switch (data.day) {

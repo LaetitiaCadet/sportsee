@@ -1,5 +1,13 @@
-import {LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from "recharts"
+import {LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts"
 import "../../../scss/components/Average.scss"
+import PropTypes from 'prop-types'
+
+/**
+ * The function returns a div with a class of position-relative bgd-red rounded. Inside this div, there
+ * is a div with a class of average-title. Inside this div, there is a paragraph. Inside this
+ * paragraph, there is a text.
+ * @returns The AverageSession component is being returned.
+ */
 const AverageSession = ({data}) => {
 /**
  * If the tooltip is active and there is a payload, return a div with a class of custom-tooltip and a
@@ -48,9 +56,9 @@ const AverageSession = ({data}) => {
               cursor={{
                 stroke:"#000",
                 strokeOpacity: 0.2,
-                strokeWidth:80,
+                strokeWidth:150,
               }}
-
+              viewBox= {{ x: 0, y: 0, width: 400, height: 400 }}
               fill="#FFFFFF"
             />
             <Line 
@@ -63,7 +71,7 @@ const AverageSession = ({data}) => {
                 r: 6,
               }}
              stroke="rgb(255, 255, 255, 0.5)" 
-             strokeWidth={2} />
+             strokeWidth={2}/>
           </LineChart>
          </ResponsiveContainer>
       </div>
@@ -71,5 +79,9 @@ const AverageSession = ({data}) => {
     )
 
 }
+
+AverageSession.propTypes = {
+  data: PropTypes.arrayOf(PropTypes.object)
+};
 
 export default AverageSession

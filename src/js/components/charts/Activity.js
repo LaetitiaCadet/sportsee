@@ -1,7 +1,18 @@
-import {BarChart,Bar,XAxis,YAxis,CartesianGrid,Tooltip,Legend,Text, ResponsiveContainer} from "recharts";
+import {BarChart,Bar,XAxis,YAxis,CartesianGrid,Tooltip,ResponsiveContainer} from "recharts";
 import "../../../scss/components/Activity.scss"
+import PropTypes from 'prop-types'
+
+/**
+ * I'm trying to create a custom tooltip for a bar chart.
+ * @returns A React component.
+ */
 const Activity = ({data}) => {  
     
+/**
+ * If the tooltip is active and there is a payload, return a div with two p tags, otherwise return
+ * null.
+ * @returns The return is a function that takes in an object with two properties, active and payload.
+ */
     const CustomTooltip = ({ active, payload }) => {
         if (active && payload) {
           return (
@@ -88,5 +99,12 @@ const Activity = ({data}) => {
 
     )
 }
+
+
+Activity.propTypes = {
+    data: PropTypes.arrayOf(PropTypes.object)
+ 
+};
+
 
 export default Activity;

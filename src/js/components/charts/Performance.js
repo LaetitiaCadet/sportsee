@@ -1,5 +1,10 @@
 import { RadarChart, PolarGrid, PolarAngleAxis, RadialBar, Radar, ResponsiveContainer } from "recharts";
+import PropTypes from 'prop-types'
 
+/**
+ * It's a function that takes in a data object and returns a div with a RadarChart inside of it.
+ * @returns A React component.
+ */
 const Performance = ({data}) => {
     return (
         <div className="bgd-black rounded">
@@ -16,4 +21,7 @@ const Performance = ({data}) => {
     )
 }
 
+Performance.propTypes = {
+    data: PropTypes.arrayOf(PropTypes.object)
+}
 export default Performance; 
