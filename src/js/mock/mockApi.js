@@ -1,5 +1,7 @@
 
 import { USER_AVERAGE_SESSIONS, USER_MAIN_DATA, USER_ACTIVITY, USER_PERFORMANCE } from "./mockData";
+import {useNavigate} from 'react-router-dom'
+
 
 
 /**
@@ -11,7 +13,7 @@ export const getUserId = (userId) => {
     for ( let user of USER_MAIN_DATA){
         if (user.id == userId){
             return user.id
-        }
+        }  
     }
 }
 

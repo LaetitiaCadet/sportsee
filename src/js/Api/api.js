@@ -1,4 +1,5 @@
 import axios from 'axios'
+import {Navigate} from 'react-router-dom'
  
 const baseURL =  `http://localhost:3001/user/`;
 
@@ -30,10 +31,8 @@ export const GetApiUsersData = async (userId) => {
 
 
 export const getApiUserId = async (userId) => {
-
     const response = await GetApiUsersData(userId)
     const user = response.user
-    console.log(user)
     return user.id
 } 
 

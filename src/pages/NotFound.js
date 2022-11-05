@@ -14,9 +14,9 @@ const NotFound = () => {
             <header className="App-header">
                 <Navbar></Navbar>
             </header>
-            <main id="homePage-block" className='row'>
+            <main id="notFound-block" className='row'>
                 <Sidebar></Sidebar>
-                <section className='col-10 ms-4 mt-5'>
+                <section className='col-sm-7 col-10 ms-4 mt-6'>
                 <h1>404 Not found</h1>
                 <p>Cette page n'existe pas!</p>
                 <ul>

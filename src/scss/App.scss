@@ -53,3 +53,12 @@ body{
 .bgd-red{
   background-color: #FF0000;
 }
+
+@media (min-width: 400px) and (max-width: 768px) { 
+  #notFound-block, #homePage-block{
+      section{
+          margin-top: 100px !important;
+      }
+
+  }
+}
