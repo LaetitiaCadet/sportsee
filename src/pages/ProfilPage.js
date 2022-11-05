@@ -53,7 +53,7 @@ const ProfilPage = () => {
     const fetchData = async () => {
 
       try {
-        const valueId = getApiUserId(userId)
+        const valueId = await getApiUserId(userId)
         if (valueId.toString() === userId) {
           const dataFirstName = await getApiUserFirstName(userId) 
           setUserFirstName(dataFirstName)
@@ -74,11 +74,9 @@ const ProfilPage = () => {
       }
     }
 
-    if (process.env.NODE_ENV === "development"){
+  if (process.env.NODE_ENV === "development"){
         console.log('MockApi')
-
        try {
-
          const valueId = getUserId(userId)
         if (valueId.toString() === userId){
           const dataFirstName = getUserFirstName(userId)
@@ -97,13 +95,12 @@ const ProfilPage = () => {
        } catch(err) {
          navigate('/404', { replace: true })
          console.log(err)
-
        }
    } else if (process.env.NODE_ENV === 'production') {
       console.log('DataApi')
-      fetchData()
-    }
-
+      console.log('isi')
+      fetchData()    
+   }
   },[])
 
   return (
