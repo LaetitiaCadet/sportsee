@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/sportsee/static/css/main.5f849070.css",
+    "main.js": "/sportsee/static/js/main.88f5f922.js",
+    "static/media/logo.png": "/sportsee/static/media/logo.337e8febecea24c0c4b1.png",
+    "index.html": "/sportsee/index.html",
+    "main.5f849070.css.map": "/sportsee/static/css/main.5f849070.css.map",
+    "main.88f5f922.js.map": "/sportsee/static/js/main.88f5f922.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5f849070.css",
+    "static/js/main.88f5f922.js"
+  ]
+}

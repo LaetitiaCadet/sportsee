@@ -1,5 +1,4 @@
 import axios from 'axios'
-import {Navigate} from 'react-router-dom'
  
 const baseURL =  `http://localhost:3002/user/`;
 
@@ -21,7 +20,6 @@ export const GetApiUsersData = async (userId) => {
 
     const datas =  await Promise.all( endPoints.map((endpoint) => axios.get(endpoint)))
         .then(([{data: user},{data: activity},{data: performance},{data: averageSession} ]) => {
-            console.log({user, activity, performance, averageSession})
             return {user, activity, performance, averageSession}
         })
 
@@ -30,6 +28,11 @@ export const GetApiUsersData = async (userId) => {
 
 
 
+/**
+ * This function gets the user id from the api and returns it.
+ * @param userId - The user's id
+ * @returns The user.id
+ */
 export const getApiUserId = async (userId) => {
     const response = await GetApiUsersData(userId)
     const user = response.user.data
