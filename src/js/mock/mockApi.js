@@ -1,7 +1,5 @@
 
 import { USER_AVERAGE_SESSIONS, USER_MAIN_DATA, USER_ACTIVITY, USER_PERFORMANCE } from "./mockData";
-import {useNavigate} from 'react-router-dom'
-
 
 
 /**

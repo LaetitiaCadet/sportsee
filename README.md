@@ -1,3 +1,8 @@
+# To use the project
+
+You need to fork this repo [https://github.com/LaetitiaCadet/P12-front-end-dashboard] and read the README.
+This repo contains all the source code to run the micro API for the sports analytics dashboard SportSee.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
